@@ -1,0 +1,64 @@
+﻿问题：
+	1、路由跳转，上一个路由数据报错
+		原因：transition标签被keep-alive包住了，
+		正常：<transition>
+						<keep-alive></keep-alive>
+					</transition>
+	2.qq音乐推荐音乐详情接口host referer验证
+		解决：后台设置一下代理。设置一下headers中referer和host
+
+	3.推荐音乐进入详情页面有：页面不同步的问题
+		解决：通过v-show 显示或隐藏，当数据加载成功
+	4.在给组件传递数据时，显示 “Expected Array, got Object.”
+		解决:type:[Object,Array],或者不写默认的类型
+	5:路由跳转过度动画不起作用
+		解决：组件元素过度应该作为transition标签的直接子元素(transition标签应该直接作用与该元素)
+	6：内容请求有点耗时，跳转动画结束后内容才出现
+		解决：使用父级路由的信息资源。
+	7.子级路由返回父级路由，样式消失	
+		未解决
+	8.组件过渡效果消失
+	 解决：子组件的根目录没写定位样式
+	9.图片懒加载失效
+		解决：loading:require(""),少了require
+	10. 歌曲播放不了
+		解决：歌曲路径没有格式化
+	11.Vue.nextTick()
+		songDetail 组件中	showSongList()方法中 nexttick不起作用
+		解决：用计算属性
+	12.this.nextTick()中的回调函数中this 指向的vue实例
+			所以可以不用箭头函数，这个api使用call()，绑定了上下文。
+	13.请求歌曲地址	Status Code=403 
+		解决：新添一个获得vkey的接口，歌源中需要vkey键
+	14.获得vkey的接口的返回值报错	：‘Uncaught SyntaxError: Unexpected token :’
+		解决：返回后调用默认的回调名
+	15：获得接口后，请求请求url,返回403
+		解决：改变guid为qq官网当前的值		
+	16:关闭播放器弹窗 失效，设置computed 报错‘Computed property "songUrl" was assigned to but it has no sette’
+		解决：改变computed 中的条件
+		原因：computed默认只有getter 方法
+	17:	初次加载没有动画效果
+		解决：使用this.$nextTick,延迟动画加载
+		原因:资源没加载完成，
+	18：better-scroll 插件对添加的css样式无法生效
+		解决：在watch对象中观察getters对象中showLast,再在nextTick回调中执行scroll.refresh()方法，重新计算better-scroll
+	19:npm start 出现依赖错误
+		解决:删除node_modules 重新cnpm i(暴力解决方案)
+		原因：node版本过高（网上说的，自己也没试过）	
+	20：移动端audio 标签autoplay属性失效	
+		解决：paly()||pause()
+	22:ref定位的dom元素中祖先元素只要使用v-if，在nextTick的回调中则取不到
+		解决：使用v-show
+		原因：惰性的：如果在初始渲染时条件为假，则什么也不做——直到条件第一次变为真时，才会开始渲染条件块。
+		详情见官网（https://cn.vuejs.org/v2/guide/conditional.html#v-if-vs-v-show）
+	23:在nextTick回调中audio的src为null,
+		解决：歌曲列表的基础组件 SongDetail/index 分发set_Play(action)应该在apiNormalSong().then()中执行
+		原因：分发应该在资源请求后
+	24:歌曲快速切歌报错
+		解决：在audio标签中play和error 事件中写方法并用定时器	
+	25：在audio标签的onended事件中写this.$refs.audio.loop=true实现单曲循环没用
+		解决：通过设置this.$refs.audio.currentTime=0
+	26:多个接口的属性不一样导致在基础组件填充时报错（推荐歌单和排行榜的详情）
+		解决：多写几个computed ,在编写整个项目时候就应该考虑到。
+	27:路由之间跳转better-scroll 无法滚动		
+		解决：监听$route更新scroll实例
