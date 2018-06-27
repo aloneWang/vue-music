@@ -11,10 +11,10 @@
 * [x] Axios
 
 ##效果截图
-![](https://github.com/aloneWang/vue-music/tree/master/static/vue-qq-music.png)
-![](https://github.com/aloneWang/vue-music/tree/master/static/vue-qq-music_1.png)
-![](https://github.com/aloneWang/vue-music/tree/master/static/vue-qq-music_2.png)
-![](https://github.com/aloneWang/vue-music/tree/master/static/vue-qq-music_3.png)
+![](https://github.com/aloneWang/vue-music/blob/master/static/vue-qq-music.png)
+![](https://github.com/aloneWang/vue-music/blob/master/static/vue-qq-music_1.png)
+![](https://github.com/aloneWang/vue-music/blob/master/static/vue-qq-music_2.png)
+![](https://github.com/aloneWang/vue-music/blob/master/static/vue-qq-music_3.png)
 
 ## Build Setup
 
